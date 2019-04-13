@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="spring2018Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Symptom">
+    <Key>
+      <PropertyRef Name="Symptom_Id" />
+    </Key>
+    <Property Name="Symptom_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Symptom_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="User_Id" Type="Int32" />
+    <Property Name="C_Time" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="UserTable" Relationship="Self.FK__Symptom__User_Id__2739D489" FromRole="Symptom" ToRole="UserTable" />
+    <NavigationProperty Name="UserTable1" Relationship="Self.fk_user_id" FromRole="Symptom" ToRole="UserTable" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Sex" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Weight" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Height" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="type" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Symptoms" Relationship="Self.FK__Symptom__User_Id__2739D489" FromRole="UserTable" ToRole="Symptom" />
+    <NavigationProperty Name="Symptoms1" Relationship="Self.fk_user_id" FromRole="UserTable" ToRole="Symptom" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Symptom__User_Id__2739D489">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="Symptom" Type="Self.Symptom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Symptom">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_id">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="Symptom" Type="Self.Symptom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Symptom">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="STContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Symptoms" EntityType="Self.Symptom" />
+    <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+    <AssociationSet Name="FK__Symptom__User_Id__2739D489" Association="Self.FK__Symptom__User_Id__2739D489">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="Symptom" EntitySet="Symptoms" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_id" Association="Self.fk_user_id">
+      <End Role="UserTable" EntitySet="UserTables" />
+      <End Role="Symptom" EntitySet="Symptoms" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

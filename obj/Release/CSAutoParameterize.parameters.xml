@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="STContext-Web.config Connection String" description="STContext Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.STModels.csdl|res://*/Models.STModels.ssdl|res://*/Models.STModels.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=n01267777.database.windows.net;initial catalog=spring2018;user id=liz;password=2018springCsharp;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\lizko\\source\\repos\\SymptomTrackerMVC\\SymptomTrackerMVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='STContext']/@connectionString" />
+  </parameter>
+</parameters>

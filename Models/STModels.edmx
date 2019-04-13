@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="spring2018Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Symptom">
+          <Key>
+            <PropertyRef Name="Symptom_Id" />
+          </Key>
+          <Property Name="Symptom_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Symptom_Desc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="User_Id" Type="int" />
+          <Property Name="_Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="Sex" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Weight" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Height" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="type" Type="varchar" MaxLength="5" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__Symptom__User_Id__2739D489">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+          <End Role="Symptom" Type="Self.Symptom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Symptom">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_user_id">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+          <End Role="Symptom" Type="Self.Symptom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Symptom">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="spring2018ModelStoreContainer">
+          <EntitySet Name="Symptom" EntityType="Self.Symptom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Symptom__User_Id__2739D489" Association="Self.FK__Symptom__User_Id__2739D489">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="Symptom" EntitySet="Symptom" />
+          </AssociationSet>
+          <AssociationSet Name="fk_user_id" Association="Self.fk_user_id">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="Symptom" EntitySet="Symptom" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="spring2018Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Symptom">
+          <Key>
+            <PropertyRef Name="Symptom_Id" />
+          </Key>
+          <Property Name="Symptom_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Symptom_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_Id" Type="Int32" />
+          <Property Name="C_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK__Symptom__User_Id__2739D489" FromRole="Symptom" ToRole="UserTable" />
+          <NavigationProperty Name="UserTable1" Relationship="Self.fk_user_id" FromRole="Symptom" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sex" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Weight" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Height" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="type" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Symptoms" Relationship="Self.FK__Symptom__User_Id__2739D489" FromRole="UserTable" ToRole="Symptom" />
+          <NavigationProperty Name="Symptoms1" Relationship="Self.fk_user_id" FromRole="UserTable" ToRole="Symptom" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Symptom__User_Id__2739D489">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+          <End Role="Symptom" Type="Self.Symptom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Symptom">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_user_id">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+          <End Role="Symptom" Type="Self.Symptom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Symptom">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="STContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Symptoms" EntityType="Self.Symptom" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+          <AssociationSet Name="FK__Symptom__User_Id__2739D489" Association="Self.FK__Symptom__User_Id__2739D489">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="Symptom" EntitySet="Symptoms" />
+          </AssociationSet>
+          <AssociationSet Name="fk_user_id" Association="Self.fk_user_id">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="Symptom" EntitySet="Symptoms" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="spring2018ModelStoreContainer" CdmEntityContainer="STContext">
+          <EntitySetMapping Name="Symptoms">
+            <EntityTypeMapping TypeName="spring2018Model.Symptom">
+              <MappingFragment StoreEntitySet="Symptom">
+                <ScalarProperty Name="Symptom_Id" ColumnName="Symptom_Id" />
+                <ScalarProperty Name="Symptom_Desc" ColumnName="Symptom_Desc" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="C_Time" ColumnName="_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="spring2018Model.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="First_name" ColumnName="First_name" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

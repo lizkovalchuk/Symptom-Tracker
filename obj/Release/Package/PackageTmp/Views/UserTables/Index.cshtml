@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SymptomTrackerMVC.Models.UserTable>
+
+@{
+    ViewBag.Title = "User Index";
+}
+
+<head>
+    <link href="~/Content/style/body.css" rel="stylesheet" type="text/css" />
+</head>
+
+<h2>User Index</h2>
+
+<p>
+    @Html.ActionLink("Create", "Create" )
+</p>
+<div>
+
+    @if (ViewBag.ExceptionMessage != null)
+    {
+        <span>@ViewBag.ExceptionMessage.Message</span>
+    }
+
+    @foreach (var item in Model)
+    {
+        <div>
+
+            <h4>
+                @Html.DisplayFor(modelItem => item.First_name)
+                @Html.DisplayFor(modelItem => item.Last_name)
+            </h4>
+
+            <span>
+                @Html.DisplayNameFor(model => model.Phone)
+                @Html.DisplayFor(modelItem => item.Phone)
+            </span>
+            <span>
+                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayFor(modelItem => item.Email)
+            </span>
+            <span>
+                @Html.DisplayNameFor(model => model.DOB)
+                @Html.DisplayFor(modelItem => item.DOB)
+            </span>
+            <span>
+                @Html.DisplayNameFor(model => model.Sex)
+                @Html.DisplayFor(modelItem => item.Sex)
+            </span>
+            <span>
+                @Html.DisplayNameFor(model => model.Weight)
+                @Html.DisplayFor(modelItem => item.Weight)
+            </span>
+            <span>
+                @Html.DisplayNameFor(model => model.Height)
+                @Html.DisplayFor(modelItem => item.Height)
+            </span>
+            <span>
+                @Html.DisplayNameFor(model => model.type)
+                @Html.DisplayFor(modelItem => item.type)
+            </span>
+            <span>
+                @Html.ActionLink("Edit", "Update", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </span>
+        </div>
+    }
+</div>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="spring2018ModelStoreContainer" CdmEntityContainer="STContext">
+    <EntitySetMapping Name="Symptoms">
+      <EntityTypeMapping TypeName="spring2018Model.Symptom">
+        <MappingFragment StoreEntitySet="Symptom">
+          <ScalarProperty Name="Symptom_Id" ColumnName="Symptom_Id" />
+          <ScalarProperty Name="Symptom_Desc" ColumnName="Symptom_Desc" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="C_Time" ColumnName="_Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="spring2018Model.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

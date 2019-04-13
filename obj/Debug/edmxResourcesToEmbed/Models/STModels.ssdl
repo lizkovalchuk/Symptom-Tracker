@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="spring2018Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Symptom">
+    <Key>
+      <PropertyRef Name="Symptom_Id" />
+    </Key>
+    <Property Name="Symptom_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Symptom_Desc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="User_Id" Type="int" />
+    <Property Name="_Time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Last_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="10" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="Sex" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Weight" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="Height" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="type" Type="varchar" MaxLength="5" />
+    <Property Name="password" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__Symptom__User_Id__2739D489">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="Symptom" Type="Self.Symptom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Symptom">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_user_id">
+    <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+    <End Role="Symptom" Type="Self.Symptom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserTable">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Symptom">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="spring2018ModelStoreContainer">
+    <EntitySet Name="Symptom" EntityType="Self.Symptom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Symptom__User_Id__2739D489" Association="Self.FK__Symptom__User_Id__2739D489">
+      <End Role="UserTable" EntitySet="UserTable" />
+      <End Role="Symptom" EntitySet="Symptom" />
+    </AssociationSet>
+    <AssociationSet Name="fk_user_id" Association="Self.fk_user_id">
+      <End Role="UserTable" EntitySet="UserTable" />
+      <End Role="Symptom" EntitySet="Symptom" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SymptomTrackerMVC.Models.Symptom>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+<h2>Symptom Tracker</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@foreach (var item in Model)
+{
+    <div>
+        <h4>
+            @Html.DisplayFor(modelItem => item.Symptom_Desc)
+        </h4>
+        <span>
+            @*@Html.DisplayFor(modelItem => item.C_Time)*@
+            @Html.DisplayFor(modelItem => item.C_Time)
+        </span>
+        <span>
+            @Html.DisplayFor(modelItem => item.UserTable.First_name)
+        </span>
+        <span>
+            @Html.DisplayFor(modelItem => item.UserTable1.Last_name)
+        </span>
+        <span>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Symptom_Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Symptom_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Symptom_Id })
+        </span>
+    </div>
+}
+<div>@Html.ActionLink("Logout", "Logout", "Login", null, new { @class = "btn btn-warning" })</div>
+
+
+</div>

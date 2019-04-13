@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is not an official website of Notre-Dame Hospital" />
+    <title>@ViewBag.Title - Hôpital Notre-Dame Hospital</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/main_style.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui-timepicker-addon.css" rel="stylesheet" media="all" type="text/css" />
+
+        <script type="text/javascript" src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+    @RenderSection("scripts", required: false)
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+
+            //TOP NAVIGATION
+            $(".menu-bar").on('click', function () {
+                $(".top-nav").slideToggle(500);
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 header-logo"><a href="@Url.Action("Index", "Home")"><img src="~/images/logo.png" class="img-responsive" alt="This is Notre-Dame hospital logo" title="NOTRE-DAME HOSPITAL LOGO" /></a></div>
+            <div class="col-lg-9 col-md-9 header-nav">
+                <ul class="social-nav">
+                    <li><a href="#" class="blue-btn">DONATE NOW</a></li>
+                    <li><a href="#" class="blue-btn">EMERGENCY ROOM STATUS</a></li>
+                    <li>
+                        <form action="#" method="post" role="search" class="search-form">
+                            <input type="submit" value="" id="btn-submit" class="search-submit">
+                            <input type="search" name="global_search" class="search-text" placeholder="Search..." autocomplete="off">
+                        </form>
+                    </li>
+
+                </ul>
+                <div class="row">
+                    <div class="menu-bar">
+                        <i class="fa fa-bars">&nbsp;Menu</i>
+                    </div>
+                    <ul class="top-nav">
+                        <li>
+                            <a href="#">PATIENTS & VISITORS <i class="fa fa-angle-down"></i></a>
+                            <ul class="child-nav">
+                                <li><a href="#">Symtom Tracker</a></li>
+                                <li><a href="#">Fill Your Prescriptions</a></li>
+                                <li>@Html.ActionLink("Book Appointment", "Index", "Appointments")</li>
+                                <li><a href="#">Get a Quote</a></li>
+                                <li><a href="#">Gift Shop</a></li>
+                                <li><a href="#">Parking App</a></li>
+                                <li><a href="#">Events</a></li>
+                                <li><a href="#">Patient Safety</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">ADMINISTRATION <i class="fa fa-angle-down"></i></a>
+                            <ul class="child-nav">
+                                <li><a href="#">Doctor Profiles</a></li>
+                                <li><a href="#">Annual Report</a></li>
+                                <li><a href="#">Govermance Policies</a></li>
+                                <li><a href="#">HNDH Board</a></li>
+                                <li><a href="#">Finance</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">JOIN OUR TEAM <i class="fa fa-angle-down"></i></a>
+                            <ul class="child-nav">
+                                <li>@Html.ActionLink("Career at HNDH", "Index", "Recruitment")</li>
+                                <li><a href="#">Volunteer Portal</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">PARTNERS <i class="fa fa-angle-down"></i></a>
+                            <ul class="child-nav">
+                                <li><a href="#">Municipality</a></li>
+                                <li><a href="#">Health Partners</a></li>
+                                <li><a href="#">Foundation</a></li>
+                                <li><a href="#">Education</a></li>
+                                <li><a href="#">Others</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">ABOUT US <i class="fa fa-angle-down"></i></a>
+                            <ul class="child-nav">
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Testimonial</a></li>
+                                <li><a href="#">Survey</a></li>
+                                <li><a href="#">History</a></li>
+                                <li><a href="#">Photo Gallery</a></li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("FAQ", "Index", "Andrei")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+
+    <footer>
+        <div class="container-fluid">
+            <div class="row footer-signages">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><img class="img-responsive" src="~/images/NOfragrance.png" alt="This is prohibited sign of fragrance" title="No fragrance sign" /></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><img class="img-responsive" src="~/images/NOsmoking_icon.png" alt="This is prohibited sign of smoking" title="No smoking sign" /></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><img class="img-responsive" src="~/images/NOviolence.png" alt="This is prohibited sign of violence" title="No violence sign" /></div>
+            </div>
+            <div class="row footer-links">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><a href="#">COMMENTS & FEEDBACKS</a></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"><a href="#">PRIVACY POLICY</a></div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">@Html.ActionLink("STAFF PORTAL", "Login", "Users")</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 copyright-text">© 2018  |  HÔPITAL NOTRE-DAME HOSPITAL - HEARST ON</div>
+                <div class="col-lg-12">THIS IS NOT AN OFFICIAL WEBSITE OF NOTRE-DAME HOSPITAL.</div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        $(function () {
+            $('body').on('click', 'ul.top-nav li', function () {
+                $(this).find('ul.child-nav').slideToggle(500);
+            });
+        });
+    </script>
+</body>
+</html>

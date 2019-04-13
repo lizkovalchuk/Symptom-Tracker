@@ -1,0 +1,53 @@
+﻿@model SymptomTrackerMVC.Models.Symptom
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Symptom</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Symptom_Desc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Symptom_Desc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.C_Time)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.C_Time)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserTable.First_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserTable.First_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserTable1.Last_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserTable1.Last_name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Symptom_Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+</div>
